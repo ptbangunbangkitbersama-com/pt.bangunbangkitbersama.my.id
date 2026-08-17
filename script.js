@@ -27,8 +27,8 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
   // Local portfolio: no Google Sheets and no Google Drive.
-  // Semua dokumentasi lokal disimpan rapi di folder /dokumentasi.
-  const manifestCandidates = ['manifest.json'];
+  // manifest.json and all photos are in the SAME folder as index.html.
+  const manifestCandidates = ['manifest.json', 'dokumentasi/manifest.json'];
   let photos = [];
   let current = 0;
   let lightbox = null;
@@ -45,7 +45,8 @@
   function safeLocalPath(filename, manifestPath) {
     const name = String(filename || '').trim();
     if (!name) return '';
-    const prefix = 'dokumentasi/';
+    // If manifest is in dokumentasi/, keep files relative to that folder.
+    const prefix = manifestPath.startsWith('dokumentasi/') ? 'dokumentasi/' : '';
     if (/^(https?:|data:|javascript:)/i.test(name)) return '';
     return prefix + name.split('/').map(encodeURIComponent).join('/');
   }
