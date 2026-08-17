@@ -28,7 +28,7 @@
 
   // Local portfolio: no Google Sheets and no Google Drive.
   // manifest.json and all photos are in the SAME folder as index.html.
-  const manifestCandidates = ['manifest.json', 'dokumentasi/manifest.json'];
+  const manifestCandidates = ['manifest.json'];
   let photos = [];
   let current = 0;
   let lightbox = null;
@@ -43,12 +43,21 @@
   }
 
   function safeLocalPath(filename, manifestPath) {
-    const name = String(filename || '').trim();
-    if (!name) return '';
-    // If manifest is in dokumentasi/, keep files relative to that folder.
-    const prefix = manifestPath.startsWith('dokumentasi/') ? 'dokumentasi/' : '';
-    if (/^(https?:|data:|javascript:)/i.test(name)) return '';
-    return prefix + name.split('/').map(encodeURIComponent).join('/');
+    let name = String(filename || '').trim().replace(/^\.\//, '');
+    if (!name || /^(https?:|data:|javascript:)/i.test(name)) return '';
+    // All documentation photos live in /dokumentasi/. Accept either a bare filename
+    // or a full dokumentasi/filename path in manifest.json.
+    if (!/^dokumentasi\//i.test(name)) name = `dokumentasi/${name}`;
+    return name.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function alternateImagePaths(src) {
+    const match = src.match(/^(.*)\.(jpe?g|png|webp)$/i);
+    if (!match) return [];
+    const base = match[1];
+    const ext = match[2].toLowerCase();
+    const exts = ext === 'jpg' ? ['jpeg','png','webp'] : ext === 'jpeg' ? ['jpg','png','webp'] : ext === 'png' ? ['jpg','jpeg','webp'] : ['jpg','jpeg','png'];
+    return exts.map(e => `${base}.${e}`);
   }
 
   async function fetchManifest(url) {
@@ -127,6 +136,14 @@
       card.append(img, overlay);
       card.addEventListener('click', () => openLightbox(index));
       img.addEventListener('error', () => {
+        const tried = JSON.parse(img.dataset.tried || '[]');
+        const alternatives = alternateImagePaths(item.src).filter(path => !tried.includes(path));
+        if (alternatives.length) {
+          tried.push(img.src);
+          img.dataset.tried = JSON.stringify(tried);
+          img.src = alternatives[0];
+          return;
+        }
         card.classList.add('is-missing');
         card.setAttribute('aria-label', `File tidak ditemukan: ${item.file}`);
         overlay.querySelector('small').textContent = `File tidak ditemukan: ${item.file}`;
