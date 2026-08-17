@@ -11,3 +11,23 @@
 
 /* V7 — Google Sheets portfolio */
 .portfolio-filters{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0 22px}.portfolio-filter{border:1px solid #cfd5d0;background:#fff;color:#07532f;padding:9px 15px;border-radius:999px;font:700 11px 'DM Sans',sans-serif;cursor:pointer}.portfolio-filter.active,.portfolio-filter:hover{background:#07532f;color:#fff;border-color:#07532f}.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;min-height:120px}.portfolio-card{background:#fff;border:1px solid #dfe3df;border-radius:9px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 5px 18px rgba(0,0,0,.045)}.portfolio-card-body{padding:20px;display:flex;flex-direction:column;flex:1}.portfolio-card-cat{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#a57a1e;text-transform:uppercase}.portfolio-card h3{font:800 28px/1.05 'Barlow Condensed';color:#07532f;margin:9px 0 8px}.portfolio-card p{font-size:12px;color:#666;margin:0 0 18px}.portfolio-drive{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#07532f;color:#fff;padding:11px 14px;border-radius:5px;font-size:11px;font-weight:800}.portfolio-drive:hover{background:#063b23}.portfolio-loading,.portfolio-empty,.portfolio-error{grid-column:1/-1;padding:35px;text-align:center;background:#fff;border:1px dashed #cfd5d0;color:#666;border-radius:8px;font-size:13px}.portfolio-status{margin-top:12px;font-size:11px;color:#777}.portfolio-status.error{color:#a34b34}@media(max-width:950px){.portfolio-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.portfolio-grid{grid-template-columns:1fr}.portfolio-card h3{font-size:25px}}
+
+
+/* Final accessibility + responsive fixes */
+.skip-link{position:fixed;left:12px;top:-60px;z-index:100;padding:10px 14px;background:#fff;color:#07532f;font-weight:800;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.skip-link:focus{top:12px}
+:focus-visible{outline:3px solid #e1b43c;outline-offset:3px}
+@media(max-width:950px){
+  .header nav{display:none;position:absolute;top:76px;left:0;right:0;margin:0;padding:10px 5vw 18px;background:rgba(5,7,6,.985);box-shadow:0 12px 20px rgba(0,0,0,.18);flex-direction:column;align-items:stretch;gap:0}
+  .header nav.show{display:flex}
+  .header nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:12px}
+  .header nav a:last-child{border-bottom:0}
+  .menu{cursor:pointer}
+}
+.portfolio-card{transition:transform .2s ease,box-shadow .2s ease}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.portfolio-drive.is-disabled{background:#8d958f;pointer-events:none}
+.portfolio-error{display:flex;flex-direction:column;align-items:center;gap:8px}
+.portfolio-retry{border:0;border-radius:6px;padding:9px 14px;background:#07532f;color:#fff;font-weight:800;cursor:pointer}
+.portfolio-noscript{padding:15px;background:#fff;border-radius:6px;color:#555}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
