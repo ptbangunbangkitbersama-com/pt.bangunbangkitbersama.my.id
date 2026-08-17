@@ -12,98 +12,13 @@
 /* V7 — Google Sheets portfolio */
 .portfolio-filters{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0 22px}.portfolio-filter{border:1px solid #cfd5d0;background:#fff;color:#07532f;padding:9px 15px;border-radius:999px;font:700 11px 'DM Sans',sans-serif;cursor:pointer}.portfolio-filter.active,.portfolio-filter:hover{background:#07532f;color:#fff;border-color:#07532f}.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;min-height:120px}.portfolio-card{background:#fff;border:1px solid #dfe3df;border-radius:9px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 5px 18px rgba(0,0,0,.045)}.portfolio-card-body{padding:20px;display:flex;flex-direction:column;flex:1}.portfolio-card-cat{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#a57a1e;text-transform:uppercase}.portfolio-card h3{font:800 28px/1.05 'Barlow Condensed';color:#07532f;margin:9px 0 8px}.portfolio-card p{font-size:12px;color:#666;margin:0 0 18px}.portfolio-drive{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#07532f;color:#fff;padding:11px 14px;border-radius:5px;font-size:11px;font-weight:800}.portfolio-drive:hover{background:#063b23}.portfolio-loading,.portfolio-empty,.portfolio-error{grid-column:1/-1;padding:35px;text-align:center;background:#fff;border:1px dashed #cfd5d0;color:#666;border-radius:8px;font-size:13px}.portfolio-status{margin-top:12px;font-size:11px;color:#777}.portfolio-status.error{color:#a34b34}@media(max-width:950px){.portfolio-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.portfolio-grid{grid-template-columns:1fr}.portfolio-card h3{font-size:25px}}
 
-
-/* DOKUMENTASI — local image slider, no Spreadsheet / Drive / manifest */
-.documentation-slider{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:35px;
-  width:100%;
-}
-.doc-viewport{
-  overflow:hidden;
-  width:100%;
-  border-radius:10px;
-  background:#dfe3df;
-  box-shadow:0 8px 25px rgba(0,0,0,.08);
-}
-.doc-track{
-  display:flex;
-  width:100%;
-  transition:transform .35s ease;
-  will-change:transform;
-}
-.doc-slide{
-  flex:0 0 100%;
-  width:100%;
-  position:relative;
-  background:#dfe3df;
-}
-.doc-slide img{
-  display:block;
-  width:100%;
-  height:min(62vw,560px);
-  min-height:280px;
-  object-fit:contain;
-  background:#dfe3df;
-}
-.doc-caption{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  padding:15px 18px;
-  color:#fff;
-  background:linear-gradient(transparent,rgba(0,0,0,.8));
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:.5px;
-}
-.doc-arrow{
-  flex:0 0 44px;
-  width:44px;
-  height:52px;
-  border:0;
-  border-radius:8px;
-  background:#07532f;
-  color:#fff;
-  font:700 38px/1 'Barlow Condensed',sans-serif;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 6px 16px rgba(0,0,0,.15);
-  z-index:2;
-}
-.doc-arrow:hover{background:#063b23}
-.doc-arrow:disabled{opacity:.35;cursor:not-allowed}
-.doc-counter{
-  text-align:center;
-  margin-top:12px;
-  color:#666;
-  font-size:11px;
-  font-weight:700;
-}
-.doc-error{
-  padding:30px;
-  text-align:center;
-  color:#666;
-  background:#fff;
-  border:1px dashed #cfd5d0;
-  border-radius:8px;
-}
-@media(max-width:600px){
-  .documentation-slider{gap:6px}
-  .doc-arrow{
-    flex:0 0 38px;
-    width:38px;
-    height:46px;
-    font-size:32px;
-  }
-  .doc-slide img{
-    height:70vw;
-    min-height:230px;
-  }
-}
+.documentation-slider{display:flex;align-items:center;gap:10px;margin-top:30px;width:100%}
+.doc-viewport{overflow:hidden;width:100%;border-radius:10px;background:#e1e4e1}
+.doc-track{display:flex;width:100%;transition:transform .35s ease}
+.doc-slide{flex:0 0 100%;margin:0;position:relative}
+.doc-slide img{display:block;width:100%;height:min(60vw,560px);min-height:280px;object-fit:contain;background:#e1e4e1}
+.doc-caption{position:absolute;bottom:0;left:0;right:0;padding:18px;color:#fff;font-weight:700;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.doc-arrow{width:44px;height:50px;border:0;border-radius:7px;background:#07532f;color:#fff;font-size:36px;cursor:pointer}
+.doc-counter{text-align:center;margin-top:10px;font-size:12px;font-weight:700}
+.doc-error{padding:40px;text-align:center;color:#555}
+@media(max-width:600px){.doc-arrow{width:38px;height:44px;font-size:30px}.doc-slide img{height:70vw;min-height:230px}}
