@@ -1,5 +1,14 @@
 [
-  "contoh-01.jpg",
-  "contoh-02.jpg",
-  "contoh-03.jpg"
+  {
+    "file": "project-01.jpeg",
+    "title": "Dokumentasi Proyek 01",
+    "category": "Dokumentasi Proyek",
+    "description": "Tambahkan keterangan proyek di sini."
+  },
+  {
+    "file": "project-02.jpeg",
+    "title": "Dokumentasi Proyek 02",
+    "category": "Dokumentasi Proyek",
+    "description": "Tambahkan keterangan proyek di sini."
+  }
 ]
